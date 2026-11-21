@@ -72,3 +72,12 @@
 | messages | 3200 | 3200 | 7 | 7 | 0 | 0 |
 
 Les valeurs manquantes augmentent pour etudiants et tutorat car les valeurs impossibles ont été mises à vide. Elles baissent pour inscriptions et activite_hebdo car les lignes supprimées contenaient elles-mêmes des cases vides. Pour inscriptions, les lignes comptées « avant » sont les 5024 lignes brutes (dont 20 doublons exacts).
+
+## Construction de base_survie.csv (5000 lignes, une par étudiant)
+
+1. **T et E** : abandon déclaré, E = 1 et T = semaine de la date de fin. Transfert, E = 0 (censure). Série de 4 semaines sans connexion ni devoir, E = 1 et T = première semaine de la série. Sinon, E = 0 et T = dernière semaine observée.
+2. **Règle des 4 semaines** : elle détecte 402 abandons non déclarés parmi les inscrits, plus 5 parmi les statuts vides et 1 parmi les étudiants sans inscription. Une case vide de connexions n'est pas comptée comme une semaine inactive. Version à 3 semaines : 1445 événements, à 5 semaines : 1435, contre 1440 à 4 semaines.
+3. **Censure** : 71,2 % des étudiants. Aucun censuré n'est supprimé.
+4. **Sources des dates** : pour les abandons, la date de fin déclarée est conservée (écart de 1 à 2 semaines avec la dernière activité dans 34 cas). Les 28 abandons ou transferts sans date de fin utilisent leur dernière semaine d'activité.
+5. **Tutorat** : 1255 étudiants tutorés. 15 ont un tutorat qui commence 2 à 4 semaines après T (colonne tutorat_apres_T). Parmi eux, 9 abandons déclarés commencent le tutorat après leur dernière activité : incohérence entre tables, lignes conservées. Les 6 autres sont restés inscrits mais silencieux.
+6. **nb_seances** non incluse dans la base : c'est une variable mesurée après le début du tutorat (risque de biais du temps immortel). À traiter dans le DAG (CA-01).
