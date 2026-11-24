@@ -52,3 +52,30 @@
 - 9 étudiants dont le tutorat commence après leur départ : lignes gardées, à traiter dans le DAG (CA-01)
 
 **Heures** : environ 1 h 10 (17 h 08 à 18 h 18)
+## 23/11/2026
+
+**Fait**
+- Format période-personne (periode_personne.csv, 121934 lignes) : DA-07 terminée
+
+**Prévu**
+- Analyse exploratoire (DA-08), Kaplan-Meier et log-rank (SV-01)
+
+**Blocages et erreurs**
+- Aucun
+
+**Heures** : [heures du 23/11]
+
+## 24/11/2026
+
+**Fait**
+- Analyse exploratoire : profils, taux de censure (71,2 %), deux périodes critiques (DA-08)
+- Kaplan-Meier global et par groupe, tests du log-rank, semaines critiques (SV-01)
+
+**Prévu**
+- Modèle de Cox et vérification de la proportionnalité (SV-02)
+- DAG et choix de la méthode contre le biais du temps immortel (CA-01)
+
+**Blocages et erreurs**
+- Aucun
+
+**Heures** : Environ 3h
